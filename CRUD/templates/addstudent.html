@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add student</title>
+</head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <style>
+        #container {
+            width:750px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+<body>
+
+<div id="container">
+  <form action="{{url_for('insert')}}" method="POST">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Student ID</label>
+      <input type="number" class="form-control" name="id"  aria-describedby="emailHelp" >
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Name</label>
+      <input type="text" class="form-control" name="name" aria-describedby="emailHelp" >
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" >
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Phone number</label>
+      <input type="text" maxlength="10" class="form-control" name="phone" id="exampleInputPassword1" >
+    </div>
+    {% if dmsg %}
+    <p style="color:red">UserId already exits..</p>
+    {% endif %}
+    {% if error %}
+    <p style="color:red">Check your input details..</p>
+    {% endif %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+</body>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</html>
